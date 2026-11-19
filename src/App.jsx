@@ -120,3 +120,12 @@
 // }
 
 // export default App
+
+// Correção mínima temporária para destravar `npm run build` (App.jsx estava
+// inteiramente comentado, sem export default). A substituição definitiva é da
+// tarefa 6.2, sob responsabilidade da Lesley.
+function App() {
+  return <main>Catálogo de desenhos</main>
+}
+
+export default App
