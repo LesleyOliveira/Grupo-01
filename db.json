@@ -1,0 +1,20 @@
+{
+  "desenhos": [
+    {
+      "id": 1,
+      "titulo": "Avatar: A Lenda de Aang",
+      "genero": "Aventura",
+      "anoLancamento": 2005,
+      "criador": "Michael Dante DiMartino e Bryan Konietzko",
+      "sinopse": "Aang, o último dobrador de ar, precisa dominar os quatro elementos para deter a Nação do Fogo."
+    },
+    {
+      "id": 2,
+      "titulo": "As Meninas Superpoderosas",
+      "genero": "Ação",
+      "anoLancamento": 1998,
+      "criador": "Craig McCracken",
+      "sinopse": ""
+    }
+  ]
+}
