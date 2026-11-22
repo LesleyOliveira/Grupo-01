@@ -129,3 +129,9 @@ Quando a requisição de cadastro falhar, o sistema SHALL manter os dados preenc
 - **THEN** o sistema exibe a mensagem "Não foi possível cadastrar o desenho."
 - **THEN** o sistema mantém os valores digitados no formulário
 - **THEN** o novo desenho não é adicionado à listagem
+
+#### Scenario: Nova tentativa de envio após um cadastro anterior
+
+- **WHEN** uma mensagem de sucesso ou de falha de cadastro está visível e o usuário envia o formulário novamente
+- **THEN** o sistema remove a mensagem anterior antes de processar o novo envio
+- **THEN** se o novo envio for barrado pela validação, apenas as mensagens de validação dos campos ficam visíveis

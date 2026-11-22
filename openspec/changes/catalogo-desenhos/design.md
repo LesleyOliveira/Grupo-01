@@ -84,6 +84,7 @@ A página busca os desenhos na montagem por meio de uma função `carregarDesenh
 
 - **Por quê**: o erro da listagem é o comportamento obrigatório do ciclo; o erro de cadastro é uma suposição de escopo adicionada por simetria, porque uma falha de `POST` não pode parecer sucesso (ver `spec.md`).
 - **Como o erro é detectado**: `try/catch` em torno das chamadas Axios; qualquer rejeição (rede, timeout, status fora de 2xx) é tratada como falha.
+- **Limpeza do feedback de cadastro**: toda nova tentativa de envio limpa `sucesso` e `erroCadastro`. Como o `DesenhoForm` não chama `onCadastrar` quando a validação falha, a página escuta o `submit` em um wrapper (`onSubmitCapture`) em vez de alterar o contrato `onCadastrar`/`enviando` do formulário. Encontrado na validação da tarefa 6.3: sucesso seguido de envio inválido mantinha "Desenho cadastrado com sucesso" na tela.
 
 ### 7. Divisão das tarefas por arquivo para evitar conflito
 

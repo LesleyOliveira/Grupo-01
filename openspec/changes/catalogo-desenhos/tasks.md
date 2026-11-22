@@ -596,7 +596,7 @@ Remove-Item src/assets
 
 Substitua `public/favicon.svg` por um ícone próprio (uma televisão simples) e reescreva o `README.md` com a descrição do catálogo, os comandos `npm install`, `npm run server`, `npm run dev`, `npm run lint` e `npm run build`, a estrutura de pastas e a divisão de tarefas entre os seis integrantes.
 
-- [ ] 6.3 Validar os fluxos de sucesso com o mock no ar (verificação: os quatro cenários abaixo passam na interface).
+- [x] 6.3 Validar os fluxos de sucesso com o mock no ar (verificação: os quatro cenários abaixo passam na interface).
 
 ```text
 1) npm run server  (terminal 1)
@@ -609,13 +609,29 @@ Substitua `public/favicon.svg` por um ícone próprio (uma televisão simples) e
 - Formulário inválido: enviar vazio e confirmar mensagens de título, gênero, ano e criador, sem requisição no DevTools.
 - Ano inválido: informar `1800` e depois `20a5` e confirmar a mensagem do intervalo em ambos os casos.
 
-- [ ] 6.4 Validar os fluxos de erro (verificação: mensagem e nova tentativa se comportam como na spec).
+- [x] 6.4 Validar os fluxos de erro (verificação: mensagem e nova tentativa se comportam como na spec).
 
 Com a página aberta, pare o `npm run server` (Ctrl+C) e clique em "Tentar novamente":
 
 - A mensagem "Não foi possível carregar os desenhos." e o botão "Tentar novamente" continuam visíveis.
 - Religar o mock e clicar novamente em "Tentar novamente" substitui o erro pela listagem.
 - Com o mock desligado, enviar um cadastro válido exibe "Não foi possível cadastrar o desenho." e mantém os valores digitados.
+
+- [ ] 6.5 Limpar o feedback de cadastro a cada nova tentativa de envio (verificação: cadastrar com sucesso e, em seguida, enviar o formulário vazio; "Desenho cadastrado com sucesso" desaparece e só as mensagens de campo ficam visíveis).
+
+Encontrado na validação da 6.3: o `DesenhoForm` não chama `onCadastrar` quando a validação falha, então a página não ficava sabendo da nova tentativa. A correção fica só na página, sem alterar o contrato do formulário (ver `design.md`, decisão 6):
+
+```jsx
+function limparFeedbackCadastro() {
+  setSucesso(false)
+  setErroCadastro(null)
+}
+
+// ...
+<div onSubmitCapture={limparFeedbackCadastro}>
+  <DesenhoForm onCadastrar={cadastrar} enviando={enviando} />
+</div>
+```
 
 ## 7. Fechamento do ciclo e versionamento (grupo, coordenação de Lesley)
 

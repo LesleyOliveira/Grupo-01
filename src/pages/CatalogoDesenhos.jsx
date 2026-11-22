@@ -32,6 +32,13 @@ export default function CatalogoDesenhos() {
     carregarDesenhos()
   }, [carregarDesenhos])
 
+  // O DesenhoForm não chama onCadastrar quando a validação falha; escutar o
+  // submit garante que o feedback de um envio anterior não fique na tela.
+  function limparFeedbackCadastro() {
+    setSucesso(false)
+    setErroCadastro(null)
+  }
+
   async function cadastrar(payload) {
     setEnviando(true)
     setErroCadastro(null)
@@ -92,7 +99,9 @@ export default function CatalogoDesenhos() {
             <Feedback tipo="erro" mensagem={erroCadastro} />
           ) : null}
 
-          <DesenhoForm onCadastrar={cadastrar} enviando={enviando} />
+          <div onSubmitCapture={limparFeedbackCadastro}>
+            <DesenhoForm onCadastrar={cadastrar} enviando={enviando} />
+          </div>
         </section>
       </div>
     </main>
