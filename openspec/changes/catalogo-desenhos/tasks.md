@@ -617,7 +617,7 @@ Com a página aberta, pare o `npm run server` (Ctrl+C) e clique em "Tentar novam
 - Religar o mock e clicar novamente em "Tentar novamente" substitui o erro pela listagem.
 - Com o mock desligado, enviar um cadastro válido exibe "Não foi possível cadastrar o desenho." e mantém os valores digitados.
 
-- [ ] 6.5 Limpar o feedback de cadastro a cada nova tentativa de envio (verificação: cadastrar com sucesso e, em seguida, enviar o formulário vazio; "Desenho cadastrado com sucesso" desaparece e só as mensagens de campo ficam visíveis).
+- [x] 6.5 Limpar o feedback de cadastro a cada nova tentativa de envio (verificação: cadastrar com sucesso e, em seguida, enviar o formulário vazio; "Desenho cadastrado com sucesso" desaparece e só as mensagens de campo ficam visíveis).
 
 Encontrado na validação da 6.3: o `DesenhoForm` não chama `onCadastrar` quando a validação falha, então a página não ficava sabendo da nova tentativa. A correção fica só na página, sem alterar o contrato do formulário (ver `design.md`, decisão 6):
 
