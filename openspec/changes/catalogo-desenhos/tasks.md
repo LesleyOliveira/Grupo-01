@@ -637,7 +637,7 @@ function limparFeedbackCadastro() {
 
 **Objetivo:** garantir que os artefatos do framework e o código validado entram no Git juntos.
 
-- [ ] 7.1 Validar os artefatos do OpenSpec (verificação: `openspec validate catalogo-desenhos --strict` responde que a mudança é válida).
+- [x] 7.1 Validar os artefatos do OpenSpec (verificação: `openspec validate catalogo-desenhos --strict` responde que a mudança é válida).
 
 ```powershell
 openspec validate catalogo-desenhos --strict
@@ -645,18 +645,18 @@ openspec validate catalogo-desenhos --strict
 
 Se o PowerShell bloquear o comando por política de execução, use `cmd /c openspec.cmd validate catalogo-desenhos --strict`.
 
-- [ ] 7.2 Rodar as verificações estáticas do projeto (verificação: os dois comandos terminam com sucesso).
+- [x] 7.2 Rodar as verificações estáticas do projeto (verificação: os dois comandos terminam com sucesso).
 
 ```powershell
 npm run lint
 npm run build
 ```
 
-- [ ] 7.3 Executar a checklist completa de cenários da spec com o mock ligado e desligado (verificação: todos os cenários de `specs/catalogo-desenhos/spec.md` foram observados ao menos uma vez).
+- [x] 7.3 Executar a checklist completa de cenários da spec com o mock ligado e desligado (verificação: todos os cenários de `specs/catalogo-desenhos/spec.md` foram observados ao menos uma vez).
 
 A checklist cobre: lista preenchida, lista vazia (remover temporariamente os itens de `db.json`), carregamento, cadastro válido, campos obrigatórios, ano fora do intervalo, ano não numérico, sinopse vazia, sinopse acima de 500 caracteres, falha de listagem, nova tentativa bem-sucedida, nova tentativa malsucedida e falha de cadastro. Registre o resultado no commit.
 
-- [ ] 7.4 Commitar código e artefatos do ciclo (verificação: `git log --oneline` mostra o commit e `git show --stat HEAD` inclui `openspec/changes/catalogo-desenhos/`).
+- [x] 7.4 Commitar código e artefatos do ciclo (verificação: `git log --oneline` mostra o commit e `git show --stat HEAD` inclui `openspec/changes/catalogo-desenhos/`).
 
 ```powershell
 git add .
