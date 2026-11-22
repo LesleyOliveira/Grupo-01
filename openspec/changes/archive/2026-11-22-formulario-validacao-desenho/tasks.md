@@ -320,7 +320,7 @@ git status
 git commit -m "feat: validacao e formulario de cadastro de desenhos"
 ```
 
-- [ ] 4.7 Avisar o responsável do exercício 06 que o contrato `onCadastrar(payload) => Promise<boolean>` e `enviando` está pronto para a integração (verificação: o contrato foi comunicado e registrado no grupo).
+- [x] 4.7 Avisar o responsável do exercício 06 que o contrato `onCadastrar(payload) => Promise<boolean>` e `enviando` está pronto para a integração (verificação: o contrato foi comunicado e registrado no grupo).
 
 ## Workflow follow-up
 

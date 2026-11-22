@@ -31,18 +31,19 @@ Cada integrante tem um exercício próprio, escrito como uma atividade de faculd
 
 ## Como rodar o projeto
 
-O repositório está no estado inicial do template: por enquanto só existem os scripts `dev`, `build`, `lint` e `preview`.
+O projeto já está integrado com catálogo, formulário, validações e feedback de estado. Para rodar localmente:
 
 ```powershell
 cmd /c "npm install"
+cmd /c "npm run server"
 cmd /c "npm run dev"
 ```
 
-O script `server` e o `db.json` são criados no exercício 01. A partir dele, o `json-server` roda em um terminal e o Vite em outro:
+Use dois terminais: o `json-server` na porta `3001` e o Vite em paralelo. Se necessário, copie `.env.example` para `.env`.
 
 ```powershell
 cmd /c "npm run server"
 cmd /c "npm run dev"
 ```
 
-O guia completo do template está no [README do projeto](../../README.md).
+A documentação consolidada do projeto está em [README do projeto](../../README.md).
