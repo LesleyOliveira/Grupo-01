@@ -107,7 +107,7 @@ Após confirmar o `POST`, remova o registro "Teste de contrato" de `db.json`. O 
 
 **Objetivo:** isolar Axios e o endereço da API, de modo que a troca do mock por um back-end próprio não altere componentes nem páginas.
 
-- [ ] 2.1 Criar `src/api/apiClient.js` com instância Axios apontando para `VITE_API_URL` (verificação: `npm run lint` sem erros e nenhuma URL `localhost` fora deste arquivo).
+- [x] 2.1 Criar `src/api/apiClient.js` com instância Axios apontando para `VITE_API_URL` (verificação: `npm run lint` sem erros e nenhuma URL `localhost` fora deste arquivo).
 
 ```js
 import axios from 'axios'
@@ -123,7 +123,7 @@ export const apiClient = axios.create({
 
 O `?.` em `import.meta.env` permite importar este módulo no Node para verificação. O timeout de 5 s evita que a tela fique carregando para sempre quando o mock estiver desligado.
 
-- [ ] 2.2 Criar `src/api/desenhosApi.js` com `listarDesenhos` e `criarDesenho` (verificação: os dois nomes são exportados e os componentes importam apenas deste módulo, nunca de `apiClient`).
+- [x] 2.2 Criar `src/api/desenhosApi.js` com `listarDesenhos` e `criarDesenho` (verificação: os dois nomes são exportados e os componentes importam apenas deste módulo, nunca de `apiClient`).
 
 ```js
 import { apiClient } from './apiClient.js'
@@ -141,7 +141,7 @@ export async function criarDesenho(desenho) {
 
 Contrato acordado com o mock e com o futuro back-end: `GET /desenhos` responde uma lista e `POST /desenhos` responde o desenho criado, já com `id`. O `id` não é enviado pelo formulário.
 
-- [ ] 2.3 Verificar o módulo contra o mock em execução (verificação: o comando abaixo imprime `total: 2` e `criado id: <número>`).
+- [x] 2.3 Verificar o módulo contra o mock em execução (verificação: o comando abaixo imprime `total: 2` e `criado id: <número>`).
 
 Com `npm run server` ativo:
 
@@ -155,7 +155,7 @@ Remova o registro "Teste de contrato" de `db.json` depois da verificação. Com 
 
 **Objetivo:** exibir os desenhos recebidos por props, sem buscar dados nem conhecer Axios.
 
-- [ ] 3.1 Criar `src/components/DesenhoList.jsx` (verificação: `npm run lint` e `npm run build` terminam sem erro; o componente não importa nada de `src/api`).
+- [x] 3.1 Criar `src/components/DesenhoList.jsx` (verificação: `npm run lint` e `npm run build` terminam sem erro; o componente não importa nada de `src/api`).
 
 ```jsx
 export default function DesenhoList({ desenhos }) {
@@ -175,7 +175,7 @@ export default function DesenhoList({ desenhos }) {
 }
 ```
 
-- [ ] 3.2 Conferir os cenários da spec que dependem deste componente (verificação: com os dois registros do `db.json`, a listagem mostra título, gênero, ano e criador em ambos, e a sinopse apenas no primeiro).
+- [x] 3.2 Conferir os cenários da spec que dependem deste componente (verificação: com os dois registros do `db.json`, a listagem mostra título, gênero, ano e criador em ambos, e a sinopse apenas no primeiro).
 
 Registre no PR/commit o resultado da conferência. A verificação visual completa acontece na tarefa 6.3, já com a página integrada.
 
@@ -183,7 +183,7 @@ Registre no PR/commit o resultado da conferência. A verificação visual comple
 
 **Objetivo:** impedir o envio de dados inválidos e entregar ao restante da aplicação um payload já normalizado.
 
-- [ ] 4.1 Criar `src/components/validarDesenho.js` (verificação: `npm run lint` sem erros e arquivo sem JSX, pronto para execução no Node).
+- [x] 4.1 Criar `src/components/validarDesenho.js` (verificação: `npm run lint` sem erros e arquivo sem JSX, pronto para execução no Node).
 
 ```js
 const ANO_MINIMO = 1900
@@ -222,13 +222,13 @@ export function validarDesenho(valores) {
 
 O ano é tratado como texto no formulário e convertido apenas na validação. Isso permite distinguir "vazio", "não numérico" e "fora do intervalo", como a spec exige.
 
-- [ ] 4.2 Verificar as regras com casos reais (verificação: o comando abaixo imprime três objetos com erro e um objeto vazio `{}` no último caso).
+- [x] 4.2 Verificar as regras com casos reais (verificação: o comando abaixo imprime três objetos com erro e um objeto vazio `{}` no último caso).
 
 ```powershell
 node -e "import('./src/components/validarDesenho.js').then(({ validarDesenho }) => { console.log(validarDesenho({ titulo: ' ', genero: 'Ação', anoLancamento: '2005', criador: 'X', sinopse: '' })); console.log(validarDesenho({ titulo: 'A', genero: 'B', anoLancamento: '1800', criador: 'C', sinopse: '' })); console.log(validarDesenho({ titulo: 'A', genero: 'B', anoLancamento: '2005', criador: 'C', sinopse: 'a'.repeat(501) })); console.log(validarDesenho({ titulo: 'A', genero: 'B', anoLancamento: '2005', criador: 'C', sinopse: '' })); })"
 ```
 
-- [ ] 4.3 Criar `src/components/DesenhoForm.jsx` com os cinco campos, mensagens por campo e bloqueio durante o envio (verificação: `npm run build` sem erros e nenhum `fetch`/axios no arquivo).
+- [x] 4.3 Criar `src/components/DesenhoForm.jsx` com os cinco campos, mensagens por campo e bloqueio durante o envio (verificação: `npm run build` sem erros e nenhum `fetch`/axios no arquivo).
 
 ```jsx
 import { useState } from 'react'
@@ -338,7 +338,7 @@ export default function DesenhoForm({ onCadastrar, enviando }) {
 }
 ```
 
-- [ ] 4.4 Revisar o componente contra a spec (verificação: o `if` que verifica `validarDesenho` retorna antes de chamar `onCadastrar`, e o arquivo não importa nada de `src/api`).
+- [x] 4.4 Revisar o componente contra a spec (verificação: o `if` que verifica `validarDesenho` retorna antes de chamar `onCadastrar`, e o arquivo não importa nada de `src/api`).
 
 A verificação visual das mensagens por campo acontece na tarefa 6.3, com a página integrada.
 
@@ -346,7 +346,7 @@ A verificação visual das mensagens por campo acontece na tarefa 6.3, com a pá
 
 **Objetivo:** concentrar carregamento, erro com nova tentativa, lista vazia e sucesso em um único componente previsível.
 
-- [ ] 5.1 Criar `src/components/Feedback.jsx` (verificação: `npm run lint` e `npm run build` sem erros; o botão "Tentar novamente" aparece apenas em `tipo === 'erro'` com `onRetry`).
+- [x] 5.1 Criar `src/components/Feedback.jsx` (verificação: `npm run lint` e `npm run build` sem erros; o botão "Tentar novamente" aparece apenas em `tipo === 'erro'` com `onRetry`).
 
 ```jsx
 export default function Feedback({ tipo, mensagem, onRetry }) {
@@ -365,7 +365,7 @@ export default function Feedback({ tipo, mensagem, onRetry }) {
 }
 ```
 
-- [ ] 5.2 Conferir os quatro estados exigidos pela spec (verificação: revisar o componente e confirmar que `carregando`, `erro`, `vazio` e `sucesso` produzem textos distintos e que só `erro` habilita a nova tentativa).
+- [x] 5.2 Conferir os quatro estados exigidos pela spec (verificação: revisar o componente e confirmar que `carregando`, `erro`, `vazio` e `sucesso` produzem textos distintos e que só `erro` habilita a nova tentativa).
 
 Textos acordados: `Carregando desenhos...`, `Não foi possível carregar os desenhos.`, `Nenhum desenho encontrado.` e `Desenho cadastrado com sucesso`. O botão de nova tentativa é o único caminho de repetição da listagem.
 
@@ -373,7 +373,7 @@ Textos acordados: `Carregando desenhos...`, `Não foi possível carregar os dese
 
 **Objetivo:** unir os componentes, controlar o estado da tela e executar os fluxos reais contra o mock.
 
-- [ ] 6.1 Criar `src/pages/CatalogoDesenhos.jsx` com busca inicial, recarga, cadastro e os estados da tela (verificação: `npm run lint` e `npm run build` sem erros).
+- [x] 6.1 Criar `src/pages/CatalogoDesenhos.jsx` com busca inicial, recarga, cadastro e os estados da tela (verificação: `npm run lint` e `npm run build` sem erros).
 
 ```jsx
 import { useCallback, useEffect, useState } from 'react'
@@ -474,7 +474,7 @@ export default function CatalogoDesenhos() {
 
 O `carregarDesenhos` limpa `erroListagem` antes de cada tentativa, o que torna observáveis os dois cenários de nova tentativa da spec.
 
-- [ ] 6.2 Substituir `src/App.jsx`, `src/App.css` e `src/index.css`, reescrever `index.html` e `README.md` e remover os assets do template (`src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`, `public/icons.svg`), mantendo um favicon próprio em `public/favicon.svg` (verificação: `npm run dev` mostra apenas o catálogo e nenhum arquivo restante referencia os assets removidos).
+- [x] 6.2 Substituir `src/App.jsx`, `src/App.css` e `src/index.css`, reescrever `index.html` e `README.md` e remover os assets do template (`src/assets/hero.png`, `src/assets/react.svg`, `src/assets/vite.svg`, `public/icons.svg`), mantendo um favicon próprio em `public/favicon.svg` (verificação: `npm run dev` mostra apenas o catálogo e nenhum arquivo restante referencia os assets removidos).
 
 ```jsx
 import CatalogoDesenhos from './pages/CatalogoDesenhos.jsx'
